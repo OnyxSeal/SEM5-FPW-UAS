@@ -8,8 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('index-mahasiswa');
 Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('create-mahasiswa');
 Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('store-mahasiswa');
+Route::get('/mahasiswa/{npm}/edit', [MahasiswaController::class, 'edit'])->name('edit-mahasiswa');
+Route::delete('/mahasiswa/{npm}', [MahasiswaController::class, 'destroy'])->name('destroy-mahasiswa');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -12,8 +12,13 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        // Ambil semua data mahasiswa
+        $mahasiswas = Mahasiswa::all();
+
+        // Return view dan kirimkan data mahasiswa
+        return view('master-data.mahasiswa-master.index-mahasiswa', compact('mahasiswas'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -52,10 +57,16 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($npm)
     {
-        //
+        // Cari mahasiswa berdasarkan NPM
+        $mahasiswa = Mahasiswa::where('npm', $npm)->firstOrFail();
+
+        // Tampilkan form edit dengan data mahasiswa
+        return view('master-data.mahasiswa-master.edit-mahasiswa', compact('mahasiswa'));
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -68,8 +79,17 @@ class MahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($npm)
     {
-        //
+        // Cari mahasiswa berdasarkan NPM
+        $mahasiswa = Mahasiswa::where('npm', $npm)->firstOrFail();
+
+        // Hapus data mahasiswa
+        $mahasiswa->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('index-mahasiswa')->with('success', 'Data mahasiswa berhasil dihapus.');
     }
+
+
 }
