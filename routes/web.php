@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('create-mahasiswa');
+Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('store-mahasiswa');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
