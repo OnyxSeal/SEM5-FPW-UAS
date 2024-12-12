@@ -1,4 +1,4 @@
-# Universitas Teknologi Nusantara
+# Universitas Singaperbangsa Karawang
 
 **Program Studi:** Informatika  
 **Mata Kuliah:** Framework Pemrograman Web  
